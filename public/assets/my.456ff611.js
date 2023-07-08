@@ -1,0 +1,1 @@
+import{d as e,c as t,o as a,u as o}from"./index.f931844d.js";const m=e({__name:"my",props:{propData:{type:String,default:""}},emits:["update:modelValue"],setup(p,{emit:r}){return o(),(u,n)=>(a(),t("div",null," \u4E2A\u4EBA "))}});export{m as default};
