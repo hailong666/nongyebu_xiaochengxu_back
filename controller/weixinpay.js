@@ -26,16 +26,16 @@ function createordernum() {
     return orderCode;
     //基于年月日时分秒+随机数生成订单编号
 }
-const pay = new WxPay({
-    appid: config.weixin.appid, // 微信小程序appid
-    mchid: config.weixin.mch_id, // 商户帐号ID
-    publicKey: fs.readFileSync('/home/ubuntu/apiclient_cert.pem'), // 公钥
-    privateKey: fs.readFileSync('/home/ubuntu/apiclient_key.pem'), // 秘钥
-  });
+// const pay = new WxPay({
+//     appid: config.weixin.appid, // 微信小程序appid
+//     mchid: config.weixin.mch_id, // 商户帐号ID
+//     publicKey: fs.readFileSync('/home/ubuntu/apiclient_cert.pem'), // 公钥
+//     privateKey: fs.readFileSync('/home/ubuntu/apiclient_key.pem'), // 秘钥
+//   });
 async function createUnifiedOrder(payInfo) {
 
-      const result = await pay.transactions_jsapi(payInfo);
-      return result
+      // const result = await pay.transactions_jsapi(payInfo);
+      // return result
 
 
 
