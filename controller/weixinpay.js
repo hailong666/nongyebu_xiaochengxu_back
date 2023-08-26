@@ -5,6 +5,7 @@ const fs = require('fs');
 const WxPay = require('wechatpay-node-v3');
 const config = require('../config');
 const { name } = require('../models/Cart');
+// const { JSON } = require('sequelize');
 
 function setTimeDateFmt(s) {  // 个位数补齐十位数
     return s < 10 ? '0' + s : s;
@@ -291,12 +292,23 @@ module.exports = {
     async okOrder(req, res){
       if (!req.checkFormBody(['id'], res)) return
       let id = parseInt(req.params.id)
+      let items = await sqlExcute(`SELECT item FROM orders WHERE id = ?`, id)
+      // console.log(items[0].item)
+      itemjson = JSON.parse(items[0].item)
+      // console.log(itemjson)
+      for(let item in itemjson){
+        // console.log(itemjson[item])
+        let good_id = itemjson[item].id
+        let count = itemjson[item].quantity
+        // console.log(good_id + "  ---  " + count)
+        await sqlExcute(`UPDATE sp_goods SET sp_goods.goods_number = sp_goods.goods_number - ? WHERE sp_goods.goods_number > 0 AND goods_id = ?`, [count, good_id])
+      }
       // pageSize = req.query.pageSize
       // let Countresult = await sqlExcute(`SELECT COUNT(*) AS count FROM orders `)
         sqlExcute(`UPDATE orders SET isok = 1 WHERE id = ?`, id)
         .then(result => {
           // result = {result,'orderSize':Countresult[0].count}
-          res.sendSucc('更新礼品成功!', result)
+          res.sendSucc('审批并更新礼品仓库成功!', result)
         })
         .catch(e => {
           res.sendErr(500, e.message)
