@@ -241,7 +241,7 @@ module.exports = {
       // page = req.query.page
       // pageSize = req.query.pageSize
       // let Countresult = await sqlExcute(`SELECT COUNT(*) AS count FROM orders `)
-        sqlExcute(`SELECT * FROM orders ORDER BY create_time WHERE isok != 1`)
+        sqlExcute(`SELECT * FROM orders ORDER BY create_time WHERE NOT isok = 1`)
         .then(result => {
           // result = {result,'orderSize':Countresult[0].count}
           res.sendSucc('查询订单成功!', result)
