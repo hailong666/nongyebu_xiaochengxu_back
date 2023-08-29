@@ -168,7 +168,8 @@ module.exports = {
         order['giftName'] = info.giftName
         order['giftPosition'] = info.giftPosition
         order['remark'] = info.remark
-
+        order['isok'] = 0
+        
         sqlExcute(createOrderIdSql, order)
         .then(result=>{
 
