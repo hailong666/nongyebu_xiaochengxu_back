@@ -262,12 +262,13 @@ module.exports = {
           res.sendErr(500, e.message)
         })
     },
-    async orderShenBao(req, res){
-    
-        sqlExcute(`SELECT * FROM orders ORDER BY create_time`)
+    async deleteShenling(req, res){
+        if (!req.checkFormBody(['id'], res)) return
+        let id = parseInt(req.params.id)
+        sqlExcute(`DELETE FROM orders WHERE id = ?`, id)
         .then(result => {
           // result = {result,'orderSize':Countresult[0].count}
-          res.sendSucc('查询订单成功!', result)
+          res.sendSucc('删除订单成功!', result)
         })
         .catch(e => {
           res.sendErr(500, e.message)

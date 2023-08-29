@@ -32,7 +32,7 @@ router.get('/updateGood/:id', ctrl.weixinpay.updateGood)
 router.get('/orderShenling/', ctrl.weixinpay.orderShenling)
 
 // 获取申报单
-router.get('/orderShenBao/', ctrl.weixinpay.orderShenBao)
+router.get('/deleteShenling/:id', ctrl.weixinpay.deleteShenling)
 
 // 审批订单
 router.get('/okOrder/:id', ctrl.weixinpay.okOrder)
