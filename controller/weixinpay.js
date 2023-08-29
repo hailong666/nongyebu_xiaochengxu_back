@@ -169,7 +169,7 @@ module.exports = {
         order['giftPosition'] = info.giftPosition
         order['remark'] = info.remark
         order['isok'] = 0
-        
+
         sqlExcute(createOrderIdSql, order)
         .then(result=>{
 
@@ -242,7 +242,7 @@ module.exports = {
       // page = req.query.page
       // pageSize = req.query.pageSize
       // let Countresult = await sqlExcute(`SELECT COUNT(*) AS count FROM orders `)
-        sqlExcute(`SELECT * FROM orders  WHERE isok <> 1 ORDER BY create_time`)
+        sqlExcute(`SELECT * FROM orders  WHERE isok <> 1 ORDER BY create_time DESC`)
         .then(result => {
           // result = {result,'orderSize':Countresult[0].count}
           res.sendSucc('查询订单成功!', result)
@@ -253,7 +253,7 @@ module.exports = {
     },
     async orderShenling(req, res){
       
-        sqlExcute(`SELECT * FROM orders WHERE isok = 1 ORDER BY create_time `)
+        sqlExcute(`SELECT * FROM orders WHERE isok = 1 ORDER BY create_time DESC`)
         .then(result => {
           // result = {result,'orderSize':Countresult[0].count}
           res.sendSucc('查询订单成功!', result)
