@@ -1,6 +1,6 @@
 define({
   "title": "node-shop接口文档",
-  "url": "http://49.233.9.86:9999",
+  "url": "http://82.156.2.244:9999",
   "name": "node-shop",
   "version": "1.0.0",
   "description": "",

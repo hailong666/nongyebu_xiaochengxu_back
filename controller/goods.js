@@ -111,7 +111,7 @@ module.exports = {
     // queryParams = queryParamsResult.concat(queryParams).concat(queryParamsResult)
 
     const getGoodsListSql = `SELECT g.goods_id, g.goods_name, g.goods_price,g.goods_number, g.goods_introduce, pic.pics_big
-                        FROM sp_goods g LEFT JOIN sp_goods_pics AS pic ON g.goods_id = pic.goods_id`
+                        FROM sp_goods g LEFT JOIN sp_goods_pics AS pic ON g.goods_id = pic.goods_id WHERE g.is_del = 0`
 
     sqlExcute(getGoodsListSql)
       .then(result => {
